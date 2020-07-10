@@ -1,0 +1,21 @@
+.title {
+  width: 100%;
+  text-align: center;
+}
+.workspace {
+  width: 100%;
+}
+.left {
+  width: 30%;
+}
+.right {
+  width: 70%;
+}
+span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.main {
+  /*position: relative;*/
+}

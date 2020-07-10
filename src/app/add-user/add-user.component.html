@@ -1,0 +1,36 @@
+<div class="wrapper">
+
+  <div class="modal">
+
+    <form #addUser='ngForm' >
+
+      <label>First name:
+        <input name="firstName" [(ngModel)]="firstName" required>
+      </label>
+      <br><br>
+
+      <label>Last name:
+        <input name="lastName" [(ngModel)]="lastName" required>
+      </label>
+      <br><br>
+
+      <label>Photo:
+        <select name="photo" [(ngModel)]="photo" required>
+          <option
+            *ngFor="let photo of photosUrl"
+            [value]="photo.url"
+          >{{photo.name}}</option>
+        </select>
+      </label>
+      <hr>
+
+      <button [disabled]="addUser.invalid" (click)="submit(addUser)">add user</button>
+    </form>
+
+    <br>
+    <hr>
+    <button (click)="switchModalVisible.emit()">close</button>
+
+  </div>
+
+</div >

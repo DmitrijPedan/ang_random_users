@@ -1,0 +1,14 @@
+<h2>Logger {{date | date: 'dd.MM.yyyy'}} </h2>
+<button class="clear"
+        (click)="LogService.clear()">clear</button>
+<div *ngIf="LogService.logsArray.length">
+  <div class="message"
+       *ngFor='let message of LogService.logsArray'
+        [class.blue]="message.type === 'ds'"
+        [class.red]="message.type === 'rm'"
+        [class.green]="message.type === 'add'">
+    <span>{{message.time | date: 'HH:mm:ss'}} "{{message.content}}"</span>
+  </div>
+</div>
+
+

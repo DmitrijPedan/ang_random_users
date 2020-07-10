@@ -1,0 +1,45 @@
+<div class="users">
+  <div class="left">
+    <label>Get users:
+      <input #usersCount>
+    </label>
+    <button (click)="getUsers(+usersCount.value)">get users</button>
+    <button (click)="switchModalVisible()">new User</button>
+    <ul *ngIf="users.length > 0">
+      <li *ngFor="let user of users">
+        <a (click)="handleSelect(user.login.uuid)">
+          <div class="user">
+            <div class="photo">
+              <img src="{{user.picture.large}}" alt="">
+            </div>
+            <span>{{user.name.first}} {{user.name.last}}
+            </span>
+            <button (click)="deleteUser(user.login.uuid)">X</button>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="right" >
+    <div *ngIf="selectedUsers.length > 0">
+      <app-user-detail *ngFor="let item of selectedUsers"
+                       [selectedUser]="item"
+                       (deleteSelectedUser)="deleteSelectedUser($event)"
+      ></app-user-detail>
+    </div>
+  </div>
+
+  <div class="logger">
+    <app-logger></app-logger>
+  </div>
+
+  <app-add-user
+    *ngIf="modalVisible"
+    (switchModalVisible)="switchModalVisible()"
+    (addNewUser)="addNewUser($event)"
+  ></app-add-user>
+
+</div>
+
+

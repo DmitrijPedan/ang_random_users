@@ -1,0 +1,9 @@
+<div *ngIf="selectedUser" class="card">
+  <img src="{{selectedUser.picture.large}}" alt="">
+  <p><strong>Name: </strong> {{selectedUser.name.first}} {{selectedUser.name.last}}</p>
+  <p *ngIf="selectedUser.dob"><strong>Age: </strong> {{selectedUser.dob.age}}</p>
+  <p *ngIf="selectedUser.dob"><strong>Birdth: </strong> {{selectedUser.dob.date | date: 'dd MMMM yyyy': null: 'ru' }}</p>
+  <p *ngIf="selectedUser.location"><strong>Address: </strong> {{selectedUser.location.country}}, {{selectedUser.location.state}}, {{selectedUser.location.city}}</p>
+  <button (click)="close(selectedUser.login.uuid)">Close</button>
+</div>
+
