@@ -8,7 +8,7 @@ import { LogService } from "../log.service";
 })
 export class LoggerComponent implements OnInit {
 
-  private date = new Date();
+  public date = new Date();
 
   constructor(public LogService: LogService) { }
 

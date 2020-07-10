@@ -30,9 +30,13 @@ export class UsersComponent implements OnInit {
   }
 
   handleSelect(id: string): any {
-    const select = this.users.find(user => user.login.uuid === id);
-    this.selectedUsers.push(select);
-    this.logService.write({time: new Date().toString(), type: 'uc', content: `open ${select.name.first} ${select.name.last}`});
+    if (this.selectedUsers.find(user => user.login.uuid === id)) {
+      this.logService.write({time: new Date().toString(), type: 'uc', content: `this user selected`});
+    } else {
+      const select = this.users.find(user => user.login.uuid === id);
+      this.selectedUsers.push(select);
+      this.logService.write({time: new Date().toString(), type: 'uc', content: `open ${select.name.first} ${select.name.last}`});
+    }
   }
 
   deleteSelectedUser(id: string): void {
